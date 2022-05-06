@@ -4,7 +4,9 @@
  */
 package exemplo5.converter;
 
+import exemplo5.dao.PessoaDAO;
 import exemplo5.model.Pessoa;
+import javax.enterprise.inject.spi.CDI;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -16,17 +18,31 @@ import javax.faces.convert.FacesConverter;
  */
 @FacesConverter(forClass = Pessoa.class)
 public class PessoaConverter implements Converter{
+    
+    
 
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
         System.out.println("getAsObject: " + value);
-        return null;
+        
+        // obtem uma instancia do DAO
+        PessoaDAO dao = CDI.current().select(PessoaDAO.class).get();
+        
+        // 
+        Pessoa pessoa = dao.findByCodigo(Long.valueOf(value));
+        
+        
+        
+        return pessoa;
     }
 
     @Override
     public String getAsString(FacesContext context, UIComponent component, Object value) {
         System.out.println("getAsString: " + value);
-        return null;
+        Pessoa p = (Pessoa) value;
+        
+        // retorna a chave primária do objeto
+        return String.valueOf(p.getCodigo());
     }
     
 }
