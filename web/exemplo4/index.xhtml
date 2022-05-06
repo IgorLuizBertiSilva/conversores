@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit this template
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    >
+    <head>
+        <title>Exemplo 4 - Convertor Telefone</title>
+        
+    </head>
+    <body>
+        <h:form>
+            <h:messages/>
+
+            <h:inputText size="12" value="#{telefoneBean.telefone}" />
+
+            <br/>
+            <h:commandButton value="Enviar" action="#{telefoneBean.enviar()}" />
+        </h:form>
+    </body>
+</html>
